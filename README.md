@@ -1,4 +1,4 @@
-# TIL <Todya I Learned>
+# TIL (__Todya I Learned__)
 
 배운 것들을 정리하고, 코딩 연습한 것들을 매일매일 커밋
 
