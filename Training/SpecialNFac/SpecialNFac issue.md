@@ -8,6 +8,3 @@
 
 		input : 6
 		ouput : 2^4*3^2*5^1
-
-
-![Quiz Image](/SpecialNFac_Img.png)
