@@ -19,10 +19,10 @@
 Issue : center의 좌표를 이용하여, 두 원의 중심 점과 점사이의 거리를 구한다. 
 		그 후 (Distance < Radius) 조건이 성립하면 겹치는 원이다.
 
-		**twoDistance = (float) Math.sqrt(xdiff * xdiff + ydiff * ydiff);**
-		**twoRadius = c1.radius + c2.radius;**
+		twoDistance = (float) Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+		twoRadius = c1.radius + c2.radius;
 		
-		**if(twoDistance < twoRadius)**
-			**return true;**
-		**else**
-			**return false;**
+		if(twoDistance < twoRadius)
+			return true;
+		else
+			return false;
