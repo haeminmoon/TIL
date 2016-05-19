@@ -13,6 +13,7 @@ __객체의 생성,변경,삭제 명령 : SCHEMA, DOMAIN, TABLE, VIEW, INDEX를 
 - CREATE TABLE (생성)
 
 	* 테이블 생성
+	
 		CREATE TABLE book(
 				bookno NUBMEr(5),
 				tile VARCHAR2(50),
