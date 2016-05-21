@@ -1,26 +1,20 @@
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class RecordMaker {
-	final static int MAXEMPLOYEE = 6;
+	final static int MAXEMPLOYEE = 99999;
 	final static int MAXSCORE = 101;
 	
 	public void start() {
 		int inputCount = getUserInput();
-		
 		Map<String, Integer> employeeMap = makeEmployeeMap(inputCount);
-		
 		printEmployeeMap(employeeMap);
 	}
 	
 	public void printEmployeeMap(Map<String, Integer> employeeMap) {
-		Iterator<String> iterator = employeeMap.keySet().iterator();
-		
-		while(iterator.hasNext()) {
-			String key = iterator.next();
+		for(String key : employeeMap.keySet()) {
 			System.out.println(key + " " + employeeMap.get(key));
 		}
 	}
@@ -46,15 +40,12 @@ public class RecordMaker {
 		int random = (int)(Math.random() * MAXEMPLOYEE) + 1;
 		
 		StringBuilder randomBuffer = new StringBuilder(String.valueOf(random));
-		
 		employeeNum.replace(employeeNum.length() - (randomBuffer.length()), employeeNum.length(), String.valueOf(randomBuffer));
-		
 		return employeeNum.toString();
 	}
 	
 	public int makeEmployeeScore() {
 		int employeeScore=(int) (Math.random() * MAXSCORE);
-		
 		return employeeScore;
 	}
 	
@@ -65,10 +56,9 @@ public class RecordMaker {
 		int count = scan.nextInt();
 		
 		if(count > MAXEMPLOYEE) {
-			System.out.println("your input exceeded scope of input");
+			System.out.println("최대 사원수 보다 입력값이 큽니다.");
 			System.exit(0);
 		}
-		
 		return count;
 	}
 }
