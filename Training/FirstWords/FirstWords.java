@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,19 +13,16 @@ public class FirstWords {
 	}
 	
 	public static void printFirstWordList(List<Map<Character, Integer>> firstWordList) {
+		
 		for(Map<Character, Integer> map: firstWordList) {
-			Iterator<Character> i = map.keySet().iterator();
 			boolean isPrinted = false;
-			while(i.hasNext()) {
-				 
-				 Character key = i.next();
-				 Integer value = map.get(key);
-				 
-				 if(value == 1) {
-					 System.out.println(key);
-					 isPrinted = true;
-					 break;
-				 }
+			
+			for(Character key: map.keySet()) {
+				if(map.get(key) == 1) {
+					System.out.println(key);
+					isPrinted = true;
+					break;
+				}
 			}
 			
 			if(isPrinted == false)
@@ -47,7 +43,7 @@ public class FirstWords {
 		String[] strArray = str.split(" ");
 		
 		for(int i=0; i<strArray.length;i++) {
-			Map<Character, Integer> wordMap = new HashMap<>();
+			Map<Character, Integer> wordMap = new LinkedHashMap<>();
 			char[] charArray = strArray[i].toCharArray();
 			
 			for(int j=0; j<charArray.length; j++) {

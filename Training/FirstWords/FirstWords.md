@@ -9,7 +9,10 @@
 		a
 		c
 
-- Issue : String에 문자열을 입력 받은 후, 띄어쓰기로 Split -> List<Map<Character, Integer>> firstWordList 형태로 맵에서 중복된 알파벳을 counting함 -> 출력할때 value가 1인 것만 출력
+- Issue : 
+	String에 문자열을 입력 받은 후, 띄어쓰기로 Split -> List<Map<Character, Integer>> firstWordList 형태로 맵에서 중복된 알파벳을 counting함 -> 출력할때 value가 1인 것만 출력
+
+	* 여기서 중요한 것은 Map 생성시 알파벳의 순서를 그대로 넣기 위해 LinkedHashmap을 사용
 
 **HashMap에서 key를 put할때 덮어쓰기 형식으로 업데이트 되는 것을 활용함**  
 
