@@ -27,3 +27,5 @@
   4. 만약 abstract 클래스를 상속했는데 abstract 메소드를 구현해 주지 않았다면 이 클래스 역시 abstract 클래스로 선언되어야 한다.
 
   5. abstact 한 메소드가 없어도 abstract class로 선언할 수 있다.( 상속을 통해서만 접근 가능)
+
+ ****
