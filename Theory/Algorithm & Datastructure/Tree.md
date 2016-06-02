@@ -31,3 +31,56 @@
 
 ![image3](http://cfile10.uf.tistory.com/image/132892354F2693DD1B4936)
 
+##트리 순회법
+
+	- 트리 순회 방법에는 3가지가 있다.
+
+	- 전위 순회(Preorder Traversal), 중위 순회(Inorder Traversal), 후위 순회(Postorder Traversal) 
+
+##전위 순회법(Preorder Traversal)
+
+ 1. 루트 노드부터 시작해서 아래로 내려 오면서
+
+ 2. 왼쪽 하위 트리를 방문하고 왼쪽 하위 트리의 방문이 끝나면
+
+ 3. 오른쪽 하위 트리를 방문하는 방식 
+
+ ![image4](http://cfile3.uf.tistory.com/image/195405474F26960F04874F)
+
+ ##중위 순회법(Inorder Traversal)
+
+	 - 트리는 하위 트리의 집합이라고 할 수 있고 하위 트리 역시 또 다른 하위 트리의 집합이라고 할  수 있다.
+
+	 - 따라서 아래와 같은 방법으로 탐색할 수 있다.
+
+ 1. 왼쪽 하위 트리부터 시작해서
+
+ 2. 루트를 거쳐
+
+ 3. 오른쪽 하위 트리를 방문하는 방법
+
+![image5](http://cfile9.uf.tistory.com/image/110CF14C4F26961B1B6A7F)
+
+	- 응용 사례 : 수식 트리(Expression Tree), 중위 표기식
+
+	- (1 * 2) + (7 - 8)을 수식 트리로 표현하면 다음 그림과 같이 나타낼 수 있다.
+
+![image6](http://cfile25.uf.tistory.com/image/1369F5364F26971E2CA092)
+
+##후위 순회법(Postorder Traversal)
+
+	- 전위 순회의 반대
+
+ 1. 왼쪽 하위 트리부터 시작해서
+
+ 2. 오른쪽 형제 노드를 방문 후
+
+ 3. 루트 노드를 방문하는 방법.
+
+![image7](http://cfile25.uf.tistory.com/image/203FEA484F26962D05FDEF)
+
+	- 응용 사례 : 후위 표기식. 후위 순회법을 통해 출력되는 노드를 살펴보면 후위 표기식으로 나타난다.
+
+	- 1 2 * 7 8 - +
+
+![image8](http://cfile25.uf.tistory.com/image/196E3F3C4F26972B06309F)
