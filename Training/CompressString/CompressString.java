@@ -9,20 +9,21 @@ public class CompressString {
 	
 	public static String compressingStr(String str) {
 		StringBuilder compressedStrBuilder = new StringBuilder();
-		StringBuilder convertedStrBuilder = new StringBuilder(str).append(' ');
+		char[] charArray = str.toCharArray();
 		
 		int count = 1;
-		char temp = convertedStrBuilder.charAt(0);
+		char temp = charArray[0];
 		
-		for(int i = 1; i < convertedStrBuilder.length(); i++) {
-			if(temp != convertedStrBuilder.charAt(i)) {
-				compressedStrBuilder.append(temp).append(count);
-				temp = convertedStrBuilder.charAt(i);
-				count=1;
-			} else {
+		for(char c : charArray) {
+			if(c==temp) {
 				count++;
+			} else {
+				compressedStrBuilder.append(temp).append(count);
+				temp = c;
+				count=1;
 			}
 		}
+		compressedStrBuilder.append(temp).append(count);
 		
 		return compressedStrBuilder.toString();
 	}
