@@ -11,7 +11,7 @@ public class CompressString {
 		StringBuilder compressedStrBuilder = new StringBuilder();
 		char[] charArray = str.toCharArray();
 		
-		int count = 1;
+		int count = 0;
 		char temp = charArray[0];
 		
 		for(char c : charArray) {
