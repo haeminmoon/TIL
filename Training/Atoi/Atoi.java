@@ -11,13 +11,13 @@ public class Atoi {
 	
 	public static int atoi(String str) {
 		char[] charArray = str.toCharArray();
-		int converted=0;
+		int N=0;
 		
 		for(char c: charArray) {
-			converted = (converted * 10) + ((int)c - (int)'0');
+			N = (N * 10) + ((int)c - (int)'0');
 		}
 		
-		return converted;
+		return N;
 	}
 
 }

@@ -1,3 +1,4 @@
+/*Convert Decimal to Other*/
 import java.util.Scanner;
 
 interface IConvert {
@@ -23,7 +24,7 @@ class Binary implements IConvert{
 		if(n != 0)
 			convertedDec.append(n);
 		
-		System.out.println("Convert Binary n : " + convertedDec.reverse().toString() +"(2)");
+		System.out.println("Convert to Binary : " + convertedDec.reverse().toString() +"(2)");
 	}
 }
 
@@ -46,7 +47,7 @@ class Octal implements IConvert{
 		if(n != 0)
 			convertedDec.append(n);
 		
-		System.out.println("Convert Octal n : " + convertedDec.reverse().toString() +"(8)");
+		System.out.println("Convert to Octal : " + convertedDec.reverse().toString() +"(8)");
 	}
 }
 class Hexa implements IConvert{
@@ -69,14 +70,14 @@ class Hexa implements IConvert{
 		if(n != 0)
 			convertedDec.append(n);
 		
-		System.out.println("Convert Hexa n : " + convertedDec.reverse().toString() +"(16)");
+		System.out.println("Convert to Hexa : " + convertedDec.reverse().toString() +"(16)");
 	}
 }
 
 public class ConvertDecimal {
 
 	public static void main(String[] args) {
-		int n = 233;
+		final int n = 16;
 		
 		convertingDec(new Binary(n));
 		convertingDec(new Octal(n));
