@@ -6,12 +6,17 @@ import java.util.Scanner;
 public class SpecialNFac {
 
 	public static void main(String[] args) {
-		int inputFacNum;
-		Scanner sc = new Scanner(System.in);
-		inputFacNum = sc.nextInt();
+		int inputFacNum = getUserInput();
 
 		List<SpecialNum> specialNumList = getPrimeNumList(inputFacNum);
 		printSpecialNFac(convertSpecialNFac(specialNumList, inputFacNum));
+	}
+	
+	public static int getUserInput() {
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		
+		return input;
 	}
 
 	/* Get prime number from factorial number*/
@@ -40,7 +45,7 @@ public class SpecialNFac {
 			for(int j=0; j<sList.size(); j++) {
 				int div = i/sList.get(j).getMyNum();
 				
-				while(div >= 1) {	
+				while(div > 0) {	
 					
 					if(i%sList.get(j).getMyNum() == 0) {
 						sList.get(j).addMyCount();

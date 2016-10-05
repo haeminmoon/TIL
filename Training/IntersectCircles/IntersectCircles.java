@@ -7,15 +7,19 @@ import java.util.Scanner;
 /*Check circles whether to intersect*/
 public class IntersectCircles {
 	public static void main(String[] args) {
-		int num;
-		Scanner sc = new Scanner(System.in);
-		num = sc.nextInt();
-		
+		int num = getUserInput();
 		List<Circle> circleList = getInputCircle(num);
 
 		printIntersectCircles(circleList);
 	}
 	
+	public static int getUserInput() {
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+
+		return input;
+	}
+
 	public static void printIntersectCircles(List<Circle> cl) {
 		Comparator<Circle> listSort = new Comparator<Circle>() {
 			public int compare(Circle c1, Circle c2) {
@@ -27,8 +31,14 @@ public class IntersectCircles {
 		
 		for(int i=0; i<cl.size(); i++) {
 			for(int j=i+1; j<cl.size(); j++) {
-				cl.get(i).print(cl.get(i), cl.get(j));
+				print(cl.get(i), cl.get(j));
 			}
+		}
+	}
+	
+	public static void print(Circle c1, Circle c2) {
+		if(c1.check(c1, c2)) {
+			System.out.println(c1.id + " " + c2.id);
 		}
 	}
 	
@@ -84,11 +94,5 @@ class Circle {
 			return true;
 		else
 			return false;
-	}
-	
-	public void print(Circle c1, Circle c2) {
-		if(check(c1, c2)) {
-			System.out.println(c1.id + " " + c2.id);
-		}
 	}
 }
