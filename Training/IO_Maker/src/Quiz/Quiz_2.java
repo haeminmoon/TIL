@@ -41,7 +41,7 @@ public class Quiz_2 extends BufferedStream implements IQuiz {
 		String string=null;
 		
 		try {
-			br = new BufferedReader(new FileReader("input.txt"));
+			br = new BufferedReader(new FileReader("Quiz2/input.txt"));
 			do
 			{
 				string = br.readLine();
@@ -65,7 +65,7 @@ public class Quiz_2 extends BufferedStream implements IQuiz {
 	@Override
 	public void setOutput(List<Object> resultList) {
 		try {
-			bw = new BufferedWriter(new FileWriter("output.txt"));
+			bw = new BufferedWriter(new FileWriter("Quiz2/output.txt"));
 			
 			for(Object o: resultList) {
 				bw.write("Case #" + (resultList.indexOf(o)+1));

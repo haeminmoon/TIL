@@ -6,7 +6,8 @@ import Quiz.*;
 public class Main {
 
 	public static void main(String[] args) {
-		solve(new Quiz_2());
+		solve(new Quiz_1());
+		//solve(new Quiz_2());
 	}
 	
 	public static void solve(IQuiz quiz) {
