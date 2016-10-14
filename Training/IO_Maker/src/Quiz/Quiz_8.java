@@ -1,18 +1,21 @@
 package Quiz;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-/*Check circles whether to intersect*/
-public class Quiz_8 {
-	public static void main(String[] args) {
-		int num = getUserInput();
-		List<Circle> circleList = getInputCircle(num);
+import IO_Class.BufferedStream;
+import Interface.IQuiz;
 
-		printIntersectCircles(circleList);
-	}
+/*Check circles whether to intersect*/
+public class Quiz_8 extends BufferedStream implements IQuiz{
+	List<Object> resultList = new ArrayList<>();
+	List<Object> inputList = getInputList();
 	
 	public static int getUserInput() {
 		Scanner sc = new Scanner(System.in);
@@ -62,6 +65,72 @@ public class Quiz_8 {
 			cl.add(new Circle(id, centerX, centerY, radius));
 		}
 		return cl;
+	}
+
+	@Override
+	public void solve() {
+		int T = Integer.parseInt(inputList.get(0).toString());
+		for(int i = 1;i<=T;i++)
+		{
+			String str = inputList.get(i).toString();
+			int n = Integer.parseInt(str);
+			//resultList.add(checkPowerOfTwo(n));
+		}
+		setOutput(resultList);
+		
+		int num = getUserInput();
+		List<Circle> circleList = getInputCircle(num);
+
+		printIntersectCircles(circleList);
+	}
+
+	@Override
+	public List<Object> getInputList() {
+		List<Object> arrayList = new ArrayList<>();
+		String string=null;
+		
+		try {
+			br = new BufferedReader(new FileReader("Quiz8/input.txt"));
+			do
+			{
+				string = br.readLine();
+				
+				if(string != null) {
+					arrayList.add(string);
+				}
+			}while(string != null);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			
+		}
+		finally {
+			try {br.close();}
+			catch (Exception e) {System.out.println(e);}
+		}
+		return arrayList;
+	}
+
+	@Override
+	public void setOutput(List<Object> resultList) {
+		try {
+			int caseNum = 1;
+			bw = new BufferedWriter(new FileWriter("Quiz8/output.txt"));
+			
+			for(Object o: resultList) {
+				bw.write("Case #" + (caseNum++));
+				bw.newLine();
+				bw.write(o.toString());
+				bw.newLine();
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			try {bw.close();}
+			catch (Exception e) {System.out.println(e);}
+		}
 	}
 }
 

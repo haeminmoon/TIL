@@ -1,13 +1,17 @@
 package Quiz;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Quiz_5 {
-	public static void main(String[] args) {
-		final int n = 12345678;
-		
-		System.out.println(convertingKorean(n));
-	}
+import IO_Class.BufferedStream;
+import Interface.IQuiz;
+
+public class Quiz_5 extends BufferedStream implements IQuiz{
+	List<Object> resultList = new ArrayList<>();
+	List<Object> inputList = getInputList();
 	
 	public static String convertingKorean(int n) {
 		StringBuilder convertedKorean = new StringBuilder();
@@ -15,7 +19,7 @@ public class Quiz_5 {
 		
 		final String[] ONE = {"", "일", "이","삼","사","오","육","칠","팔","구"}; 
 		final String[] TEN1 = {"천", "" , "십", "백"};
-		final String[] TEN2 = {"", "만"};
+		final String[] TEN2 = {"", "만", "억"};
 		
 		int chipher = numberList.size();
 		int chipCount = 0;
@@ -51,5 +55,66 @@ public class Quiz_5 {
 		for(String s: tempArray) {list.add(Integer.parseInt(s));}
 		
 		return list;
+	}
+
+	@Override
+	public void solve() {
+		int T = Integer.parseInt(inputList.get(0).toString());
+		for(int i = 1;i<=T;i++)
+		{
+			String str = inputList.get(i).toString();
+			int n = Integer.parseInt(str);
+			resultList.add(convertingKorean(n));
+		}
+		setOutput(resultList);			
+	}
+
+	@Override
+	public List<Object> getInputList() {
+		List<Object> arrayList = new ArrayList<>();
+		String string=null;
+		
+		try {
+			br = new BufferedReader(new FileReader("Quiz5/input.txt"));
+			do
+			{
+				string = br.readLine();
+				
+				if(string != null) {
+					arrayList.add(string);
+				}
+			}while(string != null);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			
+		}
+		finally {
+			try {br.close();}
+			catch (Exception e) {System.out.println(e);}
+		}
+		return arrayList;
+	}
+
+	@Override
+	public void setOutput(List<Object> resultList) {
+		try {
+			int caseNum = 1;
+			bw = new BufferedWriter(new FileWriter("Quiz5/output.txt"));
+			
+			for(Object o: resultList) {
+				bw.write("Case #" + (caseNum++));
+				bw.newLine();
+				bw.write(o.toString());
+				bw.newLine();
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			try {bw.close();}
+			catch (Exception e) {System.out.println(e);}
+		}
 	}
 }

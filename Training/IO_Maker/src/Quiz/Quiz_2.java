@@ -65,10 +65,11 @@ public class Quiz_2 extends BufferedStream implements IQuiz {
 	@Override
 	public void setOutput(List<Object> resultList) {
 		try {
+			int caseNum = 1;
 			bw = new BufferedWriter(new FileWriter("Quiz2/output.txt"));
 			
 			for(Object o: resultList) {
-				bw.write("Case #" + (resultList.indexOf(o)+1));
+				bw.write("Case #" + (caseNum++));
 				bw.newLine();
 				bw.write(o.toString());
 				bw.newLine();

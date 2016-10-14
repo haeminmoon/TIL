@@ -1,24 +1,26 @@
 package Quiz;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import IO_Class.BufferedStream;
+import Interface.IQuiz;
+
 /* Convert Factorial to the least common multiple list*/
-public class Quiz_9 {
+public class Quiz_9 extends BufferedStream implements IQuiz{
+	List<Object> resultList = new ArrayList<>();
+	List<Object> inputList = getInputList();
 
-	public static void main(String[] args) {
-		int inputFacNum = getUserInput();
-
-		List<SpecialNum> specialNumList = getPrimeNumList(inputFacNum);
-		printSpecialNFac(convertSpecialNFac(specialNumList, inputFacNum));
-	}
-	
-	public static int getUserInput() {
-		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
-		
-		return input;
-	}
+//	public static int getUserInput() {
+//		Scanner sc = new Scanner(System.in);
+//		int input = sc.nextInt();
+//		
+//		return input;
+//	}
 
 	/* Get prime number from factorial number*/
 	public static List<SpecialNum> getPrimeNumList(int num) {
@@ -41,7 +43,9 @@ public class Quiz_9 {
 	}
 
 	/* Check frequency of prime number  */
-	public static List<SpecialNum> convertSpecialNFac(List<SpecialNum> sList, int num) {
+	public static String convertSpecialNFac(List<SpecialNum> sList, int num) {
+		StringBuilder strBuilder = new StringBuilder();
+		
 		for (int i=2; i<=num; i++) {
 			for(int j=0; j<sList.size(); j++) {
 				int div = i/sList.get(j).getMyNum();
@@ -59,17 +63,86 @@ public class Quiz_9 {
 				}
 			}
 		}
-
-		return sList;
+		
+		for(SpecialNum s: sList) {
+			if(!sList.get(sList.size()-1).equals(s))
+				strBuilder.append(s.getMyNum() + "^" + s.getMyCount() + "*");
+			else
+				strBuilder.append(s.getMyNum() + "^" + s.getMyCount());
+		}
+		
+		return strBuilder.toString();
 	}
 
 	/* Round specialNFacList for print*/
-	public static void printSpecialNFac(List<SpecialNum> sList) {
-		for(SpecialNum s: sList) {
-			if(!sList.get(sList.size()-1).equals(s))
-				System.out.print(s.getMyNum() + "^" + s.getMyCount() + "*");
-			else
-				System.out.print(s.getMyNum() + "^" + s.getMyCount());
+//	public static void printSpecialNFac(List<SpecialNum> sList) {
+//		for(SpecialNum s: sList) {
+//			if(!sList.get(sList.size()-1).equals(s))
+//				System.out.print(s.getMyNum() + "^" + s.getMyCount() + "*");
+//			else
+//				System.out.print(s.getMyNum() + "^" + s.getMyCount());
+//		}
+//	}
+
+	@Override
+	public void solve() {
+		int T = Integer.parseInt(inputList.get(0).toString());
+		for(int i = 1;i<=T;i++)
+		{
+			String str = inputList.get(i).toString();
+			int n = Integer.parseInt(str);
+			List<SpecialNum> specialNumList = getPrimeNumList(n);
+			resultList.add(convertSpecialNFac(specialNumList, n));
+		}
+		setOutput(resultList);	
+	}
+
+	@Override
+	public List<Object> getInputList() {
+		List<Object> arrayList = new ArrayList<>();
+		String string=null;
+		
+		try {
+			br = new BufferedReader(new FileReader("Quiz9/input.txt"));
+			do
+			{
+				string = br.readLine();
+				
+				if(string != null) {
+					arrayList.add(string);
+				}
+			}while(string != null);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			
+		}
+		finally {
+			try {br.close();}
+			catch (Exception e) {System.out.println(e);}
+		}
+		return arrayList;
+	}
+
+	@Override
+	public void setOutput(List<Object> resultList) {
+		try {
+			int caseNum = 1;
+			bw = new BufferedWriter(new FileWriter("Quiz9/output.txt"));
+			
+			for(Object o: resultList) {
+				bw.write("Case #" + (caseNum++));
+				bw.newLine();
+				bw.write(o.toString());
+				bw.newLine();
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		finally {
+			try {bw.close();}
+			catch (Exception e) {System.out.println(e);}
 		}
 	}
 }

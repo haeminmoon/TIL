@@ -4,58 +4,50 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 import IO_Class.BufferedStream;
 import Interface.IQuiz;
 
-public class Quiz_7 extends BufferedStream implements IQuiz{
+public class Quiz_11 extends BufferedStream implements IQuiz {
 	List<Object> resultList = new ArrayList<>();
 	List<Object> inputList = getInputList();
 
-	public static String removedWordList(List<Map<Character, Integer>> firstWordList) {
+	public static int getUserInput() {
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
 		
+		return n;
+	}
+	
+	public static String drawTriangle(int lineNumber) {
 		StringBuilder strBuilder = new StringBuilder();
 		
-		for(Map<Character, Integer> map: firstWordList) {		
-			for(Character key: map.keySet()) {
-				if(map.get(key) == 1) {
-					strBuilder.append(key);
-				}
-			}
-			strBuilder.append(" ");
-		}
-		return strBuilder.toString();
-	}
-	
-	public static String getUserInput() {
-		Scanner scan = new Scanner(System.in);
-		String str = scan.nextLine();
-		
-		return str;
-	}
-	
-	public static List<Map<Character, Integer>> makeWordList(String str) {
-		List<Map<Character, Integer>> WordList = new ArrayList<>();
-		
-		String[] strArray = str.split(" ");
-		
-		for(int i=0; i<strArray.length;i++) {
-			Map<Character, Integer> wordMap = new LinkedHashMap<>();
-			char[] charArray = strArray[i].toCharArray();
+		for (int i = 0; i < lineNumber; i++) {
+			StringBuilder tempBuilder = new StringBuilder();
 			
-			for(int j=0; j<charArray.length; j++) {
-				if(!wordMap.containsKey(charArray[j])) 
-					wordMap.put(charArray[j], 1);
+			for (int j = 0; j < lineNumber - i; j++) {
+				tempBuilder.append(" ");
+			}
+			
+			for (int k = 0; k <= 2 * i; k++) {
+				if (k == 0 || 2 * i == k)
+					tempBuilder.append("*");
 				else
-					wordMap.put(charArray[j], wordMap.get(charArray[j])+1);
-			}	
-			WordList.add(wordMap);
+					tempBuilder.append("*");
+			}
+			
+			for(int j = lineNumber + i; j < (lineNumber*2-1); j++)
+				tempBuilder.append(" ");
+			
+			for(int h = 0; h < lineNumber; h++)
+				strBuilder.append(tempBuilder.toString());
+			
+			strBuilder.append("\n");
 		}
-		return WordList;
+		
+		return strBuilder.toString().replace("\n", System.getProperty("line.separator"));
 	}
 
 	@Override
@@ -64,10 +56,10 @@ public class Quiz_7 extends BufferedStream implements IQuiz{
 		for(int i = 1;i<=T;i++)
 		{
 			String str = inputList.get(i).toString();
-			List<Map<Character, Integer>> WordList = makeWordList(str);
-			resultList.add(removedWordList(WordList));
+			int n = Integer.parseInt(str);
+			resultList.add(drawTriangle(n));
 		}
-		setOutput(resultList);			
+		setOutput(resultList);		
 	}
 
 	@Override
@@ -76,7 +68,7 @@ public class Quiz_7 extends BufferedStream implements IQuiz{
 		String string=null;
 		
 		try {
-			br = new BufferedReader(new FileReader("Quiz7/input.txt"));
+			br = new BufferedReader(new FileReader("Quiz11/input.txt"));
 			do
 			{
 				string = br.readLine();
@@ -101,7 +93,7 @@ public class Quiz_7 extends BufferedStream implements IQuiz{
 	public void setOutput(List<Object> resultList) {
 		try {
 			int caseNum = 1;
-			bw = new BufferedWriter(new FileWriter("Quiz7/output.txt"));
+			bw = new BufferedWriter(new FileWriter("Quiz11/output.txt"));
 			
 			for(Object o: resultList) {
 				bw.write("Case #" + (caseNum++));
@@ -117,6 +109,5 @@ public class Quiz_7 extends BufferedStream implements IQuiz{
 			try {bw.close();}
 			catch (Exception e) {System.out.println(e);}
 		}
-		
 	}
 }

@@ -11,7 +11,7 @@ import IO_Class.BufferedStream;
 import Interface.IQuiz;
 
 interface IConvert {
-	public void convertingDec();
+	public String convertingDec();
 }
 
 class Binary implements IConvert{
@@ -22,7 +22,7 @@ class Binary implements IConvert{
 	}
 	
 	@Override
-	public void convertingDec() {
+	public String convertingDec() {
 		StringBuilder convertedDec = new StringBuilder();
 		
 		do {
@@ -33,7 +33,7 @@ class Binary implements IConvert{
 		if(n != 0)
 			convertedDec.append(n);
 		
-		System.out.println(convertedDec.reverse().toString() +"(2)");
+		return convertedDec.reverse().append("(2)").toString();
 	}
 }
 
@@ -45,7 +45,7 @@ class Octal implements IConvert{
 	}
 	
 	@Override
-	public void convertingDec() {
+	public String convertingDec() {
 		StringBuilder convertedDec = new StringBuilder();
 		
 		do {
@@ -56,7 +56,7 @@ class Octal implements IConvert{
 		if(n != 0)
 			convertedDec.append(n);
 		
-		System.out.println(convertedDec.reverse().toString() +"(8)");
+		return convertedDec.reverse().append("(8)").toString();
 	}
 }
 class Hexa implements IConvert{
@@ -67,7 +67,7 @@ class Hexa implements IConvert{
 	}
 	
 	@Override
-	public void convertingDec() {
+	public String convertingDec() {
 		StringBuilder convertedDec = new StringBuilder();
 		char[] HexaMappingTable = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 		
@@ -79,22 +79,33 @@ class Hexa implements IConvert{
 		if(n != 0)
 			convertedDec.append(n);
 		
-		System.out.println(convertedDec.reverse().toString() +"(16)");
+		return convertedDec.reverse().append("(16)").toString();
 	}
 }
 
 public class Quiz_1  extends BufferedStream implements IQuiz{
-	public void convertingDec(IConvert convert) {
-		convert.convertingDec();
+	List<Object> resultList = new ArrayList<>();
+	List<Object> inputList = getInputList();
+	
+	public String convertingDec(IConvert convert) {
+		return convert.convertingDec();
 	}
 	
 	@Override
 	public void solve() {
-		int n = 11111;
+		int T = Integer.parseInt(inputList.get(0).toString());
+		for(int i = 1;i<=T;i++)
+		{
+			String str = inputList.get(i).toString();
+			resultList.add(convertingDec(new Binary(Integer.parseInt(str))) + " " +
+					convertingDec(new Octal(Integer.parseInt(str))) + " " +
+					convertingDec(new Hexa(Integer.parseInt(str))));
+		}
+		setOutput(resultList);
 
-		convertingDec(new Binary(n));
-		convertingDec(new Octal(n));
-		convertingDec(new Hexa(n));
+//		convertingDec(new Binary(n));
+//		convertingDec(new Octal(n));
+//		convertingDec(new Hexa(n));
 	}
 	
 	@Override
@@ -127,10 +138,11 @@ public class Quiz_1  extends BufferedStream implements IQuiz{
 	@Override
 	public void setOutput(List<Object> resultList) {
 		try {
+			int caseNum = 1;
 			bw = new BufferedWriter(new FileWriter("Quiz1/output.txt"));
 			
 			for(Object o: resultList) {
-				bw.write("Case #" + (resultList.indexOf(o)+1));
+				bw.write("Case #" + (caseNum++));
 				bw.newLine();
 				bw.write(o.toString());
 				bw.newLine();
@@ -145,3 +157,4 @@ public class Quiz_1  extends BufferedStream implements IQuiz{
 		}
 	}
 }
+
