@@ -32,4 +32,21 @@ public class LargestSum {
 		}	
 		return ret;
 	}
+
+	/*Other solution*/
+	public static int getMaxSum(int[] a) {
+		int maxsum = 0;
+		int sum=0;
+		for(int i = 0; i < a.lenght; i++) {
+			sum += a[i];
+			if(maxsum < sum) {
+				maxsum = sum;
+			} else if(sum < 0) {
+				sum = 0;
+			}
+		}
+		return maxsum;
+	}
 }
+
+
