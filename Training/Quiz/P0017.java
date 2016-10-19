@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.xml.stream.util.StreamReaderDelegate;
-
 public class P0017 {
 	
 	public static void main(String args[]) throws Exception	{
@@ -13,7 +11,8 @@ public class P0017 {
 		int test_case;
 
 		T = sc.nextInt();
-		List<List<Integer>> inputList = generateInputList(T);
+		sc.nextLine();
+		List<List<Integer>> inputList = generateInputList(T, sc);
 		
 		for(test_case = 1; test_case <= T; test_case++) {
 			// 이 부분에서 알고리즘 프로그램을 작성하십시오.
@@ -27,19 +26,18 @@ public class P0017 {
 		}
 	}
 	
-	public static List<List<Integer>> generateInputList(int T) {
+	public static List<List<Integer>> generateInputList(int T, Scanner sc) {
 		List<List<Integer>> list = new ArrayList<>();
 		for(int i = 1; i <= T; i++) {
-			List<Integer> numList = makeNumList();
+			List<Integer> numList = makeNumList(sc);
 			list.add(numList);
 		}
 		return list;
 	}
 
-	public static List<Integer> makeNumList() {
+	public static List<Integer> makeNumList(Scanner sc) {
 		List<Integer> numList = new ArrayList<>();
-		Scanner scan = new Scanner(System.in);
-		String[] numStr = scan.nextLine().split(" ");
+		String[] numStr = sc.nextLine().split(" ");
 		
 		for(int i = 0 ; i < numStr.length ; i++) {
 			numList.add(Integer.valueOf(numStr[i]));

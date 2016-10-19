@@ -10,7 +10,8 @@ public class P0010 {
 		int test_case;
 
 		T = sc.nextInt();
-		List<List<Integer>> inputList = generateInputList(T);
+		sc.nextLine();
+		List<List<Integer>> inputList = generateInputList(T, sc);
 		
 		for(test_case = 1; test_case <= T; test_case++) {
 			// 이 부분에서 알고리즘 프로그램을 작성하십시오.
@@ -24,19 +25,18 @@ public class P0010 {
 		}
 	}
 	
-	public static List<List<Integer>> generateInputList(int T) {
+	public static List<List<Integer>> generateInputList(int T, Scanner sc) {
 		List<List<Integer>> list = new ArrayList<>();
 		for(int i = 1; i <= T; i++) {
-			List<Integer> numList = makeNumList();
+			List<Integer> numList = makeNumList(sc);
 			list.add(numList);
 		}
 		return list;
 	}
 
-	public static List<Integer> makeNumList() {
+	public static List<Integer> makeNumList(Scanner sc) {
 		List<Integer> numList = new ArrayList<>();
-		Scanner scan = new Scanner(System.in);
-		String[] numStr = scan.nextLine().split(" ");
+		String[] numStr = sc.nextLine().split(" ");
 		
 		for(int i = 0 ; i < numStr.length ; i++) {
 			numList.add(Integer.valueOf(numStr[i]));
@@ -54,5 +54,20 @@ public class P0010 {
 			ret = Math.max(sum, ret);
 		}	
 		return ret;
+	}
+	
+	/*Other solution*/
+	public static int getMaxSum(int[] a) {
+		int maxsum = 0;
+		int sum=0;
+		for(int i = 0; i < a.length; i++) {
+			sum += a[i];
+			if(maxsum < sum) {
+				maxsum = sum;
+			} else if(sum < 0) {
+				sum = 0;
+			}
+		}
+		return maxsum;
 	}
 }

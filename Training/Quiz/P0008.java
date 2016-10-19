@@ -13,7 +13,7 @@ public class P0008 {
 		int test_case;
 
 		T = sc.nextInt();
-		List<List<Circle>> inputList = generateInputList(T);
+		List<List<Circle>> inputList = generateInputList(T, sc);
 		
 		for(test_case = 1; test_case <= T; test_case++) {
 			// 이 부분에서 알고리즘 프로그램을 작성하십시오.
@@ -23,16 +23,16 @@ public class P0008 {
 
 			// 이 부분에서 정답을 출력하십시오.
 			System.out.println("Case #" + test_case);
-			System.out.println(resultBuilder);
+			System.out.println(replaceLast(resultBuilder.toString(), "\n", ""));
+			
 		}
 	}
 	
-	public static List<List<Circle>> generateInputList(int T) {
+	public static List<List<Circle>> generateInputList(int T, Scanner sc) {
 		List<List<Circle>> list = new ArrayList<>();
 		for(int i = 1; i <= T; i++) {
-			Scanner scan = new Scanner(System.in);
-			int n = scan.nextInt();
-			List<Circle> circleList = getInputCircle(n);
+			int n = sc.nextInt();
+			List<Circle> circleList = getInputCircle(n, sc);
 			list.add(circleList);
 		}
 		return list;
@@ -68,16 +68,14 @@ public class P0008 {
 		return strBuilder.toString();
 	}
 	
-	public static List<Circle> getInputCircle(int num) {
+	public static List<Circle> getInputCircle(int num, Scanner sc) {
 		List<Circle> cl = new ArrayList<>();
 		
 		int id;
 		float centerX;
 		float centerY;
 		float radius;
-		
-		Scanner sc = new Scanner(System.in);
-		
+				
 		for(int i=0; i<num ; i++) {
 			id = sc.nextInt();
 			centerX = sc.nextFloat();
@@ -87,6 +85,15 @@ public class P0008 {
 			cl.add(new Circle(id, centerX, centerY, radius));
 		}
 		return cl;
+	}
+	
+	private static String replaceLast(String string, String toReplace, String replacement) {
+		int pos = string.lastIndexOf(toReplace);
+		if (pos > -1) {
+			return string.substring(0, pos) + replacement + string.substring(pos + toReplace.length(), string.length());
+		} else {
+			return string;
+		}
 	}
 }
 

@@ -11,7 +11,8 @@ public class P0014 {
 		int test_case;
 
 		T = sc.nextInt();
-		List<String> inputList = generateInputList(T);
+		sc.nextLine();
+		List<String> inputList = generateInputList(T, sc);
 		
 		for(test_case = 1; test_case <= T; test_case++) {
 			// 이 부분에서 알고리즘 프로그램을 작성하십시오.
@@ -28,11 +29,10 @@ public class P0014 {
 		}
 	}
 	
-	public static List<String> generateInputList(int T) {
+	public static List<String> generateInputList(int T, Scanner sc) {
 		List<String> list = new ArrayList<>();
 		for(int i = 1; i <= T; i++) {
-			Scanner scan = new Scanner(System.in);
-			String s = scan.nextLine();
+			String s = sc.nextLine();
 			list.add(s);
 		}
 		return list;

@@ -11,7 +11,7 @@ public class P0011 {
 		int test_case;
 
 		T = sc.nextInt();
-		List<Integer> inputList = generateInputList(T);
+		List<Integer> inputList = generateInputList(T, sc);
 		
 		for(test_case = 1; test_case <= T; test_case++) {
 			// 이 부분에서 알고리즘 프로그램을 작성하십시오.
@@ -21,15 +21,14 @@ public class P0011 {
 
 			// 이 부분에서 정답을 출력하십시오.
 			System.out.println("Case #" + test_case);
-			System.out.println(resultBuilder);
+			System.out.println(replaceLast(resultBuilder.toString(), "\n", ""));
 		}
 	}
 	
-	public static List<Integer> generateInputList(int T) {
+	public static List<Integer> generateInputList(int T, Scanner sc) {
 		List<Integer> list = new ArrayList<>();
 		for(int i = 1; i <= T; i++) {
-			Scanner scan = new Scanner(System.in);
-			int n = scan.nextInt();
+			int n = sc.nextInt();
 			list.add(n);
 		}
 		return list;
@@ -62,5 +61,14 @@ public class P0011 {
 		}
 		
 		return strBuilder.toString();
+	}
+	
+	private static String replaceLast(String string, String toReplace, String replacement) {
+		int pos = string.lastIndexOf(toReplace);
+		if (pos > -1) {
+			return string.substring(0, pos) + replacement + string.substring(pos + toReplace.length(), string.length());
+		} else {
+			return string;
+		}
 	}
 }

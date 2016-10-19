@@ -12,7 +12,7 @@ public class P0009 {
 		int test_case;
 
 		T = sc.nextInt();
-		List<Integer> inputList = generateInputList(T);
+		List<Integer> inputList = generateInputList(T, sc);
 		
 		for(test_case = 1; test_case <= T; test_case++) {
 			// 이 부분에서 알고리즘 프로그램을 작성하십시오.
@@ -28,11 +28,10 @@ public class P0009 {
 		}
 	}
 	
-	public static List<Integer> generateInputList(int T) {
+	public static List<Integer> generateInputList(int T, Scanner sc) {
 		List<Integer> list = new ArrayList<>();
 		for(int i = 1; i <= T; i++) {
-			Scanner scan = new Scanner(System.in);
-			int n = scan.nextInt();
+			int n = sc.nextInt();
 			list.add(n);
 		}
 		return list;
