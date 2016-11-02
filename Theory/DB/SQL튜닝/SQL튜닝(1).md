@@ -3,7 +3,7 @@
 ## 시작 이론
 
 - Excution plan을 확인해보면 SQL 검색 우선 순위 조건과 실행 순서를 확인 할 수 있다.
-- SQL은 옵티마이저의 실행 정보 통계를 가지고 예상값을 봅아내서 실행한다. 
+- SQL은 옵티마이저의 실행 정보 통계를 가지고 예상값을 뽑아내서 실행한다. 
 
 
 ##Optimizer
@@ -64,6 +64,90 @@ select * from emp where deptno = 30;
 그래서 서버에 메모리를 자꾸만 사용하기 때문에 우리는 "select * from emp where deptno = :b1"같은 바인드 변수를 사용하는 것이다.
 
 
-* 서브쿼리와 조인
+* 서브쿼리와 조인 : 서브쿼리 또한 실행계획에 보면 조인절로 변환됨. 
 
-서브쿼리 또한 실행계획에 보면 조인절로 변환됨. 
+
+
+
+
+##1. Excution plan
+
+- hard Parsing 도중 생성되며, Shared Pool의 라이브러리 캐시에 저장된다.
+- 문장 실행 전 예측되는 실행 계획은 PLAN_TABLE에 저장된다.
+
+
+##2. autotrace
+전체적으로 간단한 통계들을 확인 할 수 있다. 하지만 실제 튜닝을 하는데 써먹기에는 약한 부분이 있다. (통합적인 통계 데이터만으로 판단하기에는 .. 무리가 있음)
+
+##3. Library Cache
+
+라이브러리 캐시에서 최근에 실행된 실행 계획을 검사할 수 있다.
+----
+dbms_xplan.display_cursor에 대한 접근 권한을 획득할려면...
+
+SQL> GRANT SELECT ON V_$SESSION TO sqlt ;
+SQL> GRANT SELECT ON V_$SQL TO sqlt ;
+SQL> GRANT SELECT ON V_$SQL_PLAN TO sqlt ;
+SQL> GRANT SELECT ON V_$SQL_PLAN_STATISTICS_ALL TO sqlt ;
+SQL> GRANT sqlt TO user01 ;
+
+권한을 달라고 하면 됨 !
+
+----
+
+cd adsql
+sqlplus / as sysdba
+
+@myxplan
+
+dbms_xplan	->호출자 권한
+myxplan		->생성자 권한
+
+ex)	select * from table(myxplan.display_cursor);
+
+display_cursor 함수 조회가 안되는 튜닝에 제한적이게 될 수 밖에 없다.
+
+sql문을 실행하고 "select * from table(myxplan.display_cursor);"을 실행하면 정보를 확인 할 수 있다.
+
+
+sql문을 실행하면 라이브러리 캐시안에 통계가 저장되는데, 그 정보를 그대로 .display_cursor가 가져 오는 것이다. 
+하지만 예측 통계 정보만을 가지고 튜닝을 할 순 없다. 그래서 실행 통계를 수집하기 위해서는 
+
+- 문장레벨에서 실행 통계 수집을 해야 한다. (힌트를 사용해야함)
+SELECT /*+ gather_plan_statistics */ * FROM dept WHERE deptno = 10 ;
+SELECT * FROM table(myxplan.display_cursor(null, null, 'ALLSTATS LAST')) ;
+
+- 세션 레벨의 실행 통계 수집 (파라미터 수정, ALTER SESSION 권한 필요)
+ALTER SESSION SET statistics_level = all ;
+SELECT * FROM dept WHERE deptno = 10 ;
+SELECT * FROM table(myxplan.display_cursor(null, null, 'ALLSTATS LAST')) ;
+
+
+- 가장 쉽게 실행 통계 수집하는 방법은 !
+sqlDeveloper-> Tools -> preference -> worksheet -> select adsql on Browse
+	-> 쿼리 실행
+	-> @xplan 실행
+
+
+* 실행 통계에서 ID는 라이브러리 캐시에서 해당 SQL문을 구분하기 위한 ID이다.
+
+
+##Index
+
+- ROWID는 하나의 행에 물리적인 주소이다. 이 ROWID를 WHERE절 조건으로 사용할때 가장 빠른 검색 속도를 보인다. 하지만 이 ROWID를 다 외울 수가 없기 때문에, 
+우리는 Index를 만들어서 사용한다.
+
+- 하나의 검색결과에 ROWID를 사용하기는 좀 그렇지만, 이 검색결과를 가지고 업데이트나 딜리트를 할때는 ROWID를 가지고 와서 작업하는 것도 좋다. 
+[속도는 가장 빠른 속도를 보장한다.] - 사용할 수 있는 케이스는 분명히 있다.
+
+- Index를 사용할 수 없는 문
+장1. IS NULL은 항상 인덱스를 사용할 수 없습니다.
+2. IS NOT NULL은 인덱스 사용 시 "INDEX FULL SCAN"만 가능합니다.
+3. 인덱스가 존재하는 컬럼이 조건식에 존재해야 합니다.
+4. 명시적, 암시적 컬럼 가공이 있어서는 안됩니다.
+5. 부정형 비교보다는 긍정형 조건식을 사용합니다.
+6. "%"를 앞에 사용한 LIKE는 인덱스 사용 시 "INDEX FULL SCAN"만 가능합니다.
+
+
+ex) 날짜 타입은 between 으로 TO DATE 해서 비교.
+	있냐 없냐의 유무는 항상 exists
