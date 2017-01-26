@@ -1,4 +1,4 @@
 #Cookie and Session
 
-[참조 URL](http://zaemin.kr.pe/blog/current/?p=890)
+[참조 URL](http://genesis8.tistory.com/220)
 

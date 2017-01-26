@@ -12,3 +12,7 @@
 
  - [Git Server 관리 - 스마트HTTP with Apache](http://httpd.apache.org/docs/current/howto/auth.html)	
  - [Git Server 관리 - 설정](http://webdir.tistory.com/220)
+
+ - [Learn Git Branching](http://learngitbranching.js.org/)
+
+ - [Learn Git Branching / ko](http://learnbranch.urigit.com/)
