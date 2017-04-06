@@ -10,6 +10,10 @@
 
 	sudo yum install jenkins
 
+	------ 명령어가 안되면... 파일 다운 받은 후, FTP로 올려주고 압축 해제 해줘야함
+
+
+
  2. Jenkins Service start/stop/restart
 
 	sudo service jenkins start/stop/restart
@@ -88,3 +92,6 @@
 
 ## Installration Info
 	var/lib/jenkins
+
+	이클립스 플러그인도 설치
+	build.gradle
