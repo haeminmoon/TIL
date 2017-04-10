@@ -1,0 +1,62 @@
+<div>
+  <pre>
+<!-- 문제 설명 -->
+남다른 나래는 남들과 똑같은 것을 싫어한다. 그래서 문자메세지를 받을 때도 같은 글씨가 있으면 짜증을 내곤 한다.
+
+나래만을 위해 같은 글씨를 모두 없애주는 필터링 프로그램을 제작해 주자.
+
+  </pre>
+
+  <div class="format-box">INPUT FORMAT</div>
+  <pre>
+<!-- 입력 설명 -->
+- 입력은 표준입력으로 제공된다.
+- 입력은 여러 테스트 케이스가 포함될 수 있다.
+- 첫째 줄 에는 테스트 케이스의 개수를 나타내는 자연수 T 가 주어진다. 이후 차례로 T개의 테스트 케이스가 주어진다 (1 ≤ T ≤ 100)
+- 둘째 줄부터 T+1번째 줄까지 테스트 케이스 S가 입력된다. 각 테스트 케이스는 개행문자(newline)로 구분된다. (1 ≤ S.length ≤ 10000)
+- 입력 문자열의 범위는 영문 대,소문자 이며 대소문자는 구분된다.
+
+  </pre>
+  <div class="format-box">OUTPUT FORMAT</div>
+  <pre>
+<!-- 출력 설명 -->
+- 각 테스트 케이스의 답을 표준출력으로 출력해야 한다.
+- 각 테스트 케이스마다 첫줄에는 "Case #C"와 개행문자(newline) 출력하여야 한다. 이때 C는 테스트 케이스의 번호이다. 이후 답과 개행문자(newline)를 출력한다.
+
+  </pre>
+  <hr class="hr-1">
+  <div class="example-box"> EXAMPLE </div>
+  <table class="table-io-case table">
+    <thead>
+      <tr>
+        <th>입력</th>
+        <th>출력</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <pre>
+<!-- 샘플 입력 -->
+3
+agsaaaA
+hanwha
+ghjkhkhhhhtkk
+          </pre>
+        </td>
+        <td>
+          <pre>
+<!-- 샘플 출력 -->
+Case #1
+gsA
+Case #2
+nw
+Case #3
+gjt
+
+          </pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

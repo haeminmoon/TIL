@@ -1,0 +1,50 @@
+<div>
+  <pre>
+<!-- 문제 설명 -->
+지용이는 교수님으로 부터, 2개의 자연수를 입력받아 합을 계산하는 프로그램을 만들어 달라는 부탁을 받았다. 하지만 지용이는 프로그래밍을 전혀 알지 못하여 이번에 한화에 지원한 멋진 당신에게 부탁했다. 지용이를 도와주자!
+  </pre>
+
+  <div class="format-box">INPUT FORMAT</div>
+  <pre>
+<!-- 입력 설명 -->
+* 입력은 표준입력으로 제공된다.
+* 입력은 여러 테스트 케이스가 포함될 수 있다.
+* 첫째 줄 에는 테스트 케이스의 개수를 나타내는 자연수 T 가 주어진다. 이후 차례로 T개의 테스트 케이스가 주어진다 (1 ≤ T ≤ 100)
+* 둘째 줄에는 2개의 자연수A,B 가 주어진다.( 1 ≤ A,B ≤ 10000) 각 테스트 케이스는 개행문자(newline)로 구분된다.
+</pre>
+  <div class="format-box">OUTPUT FORMAT</div>
+<pre>
+<!-- 출력 설명 -->
+* 각 테스트 케이스의 답을 표준출력으로 출력해야 한다.
+* 각 테스트 케이스마다 첫줄에는 "Case #C"와 개행문자(newline)를 출력하여야 한다. 이때 C는 테스트 케이스의 번호이다. 이후 답과 개행문자(newline)를 출력한다.
+</pre>
+  <hr class="hr-1">
+  <div class="example-box"> EXAMPLE </div>
+  <table class="table-io-case table">
+    <thead>
+      <tr>
+        <th>입력</th>
+        <th>출력</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <pre>
+2
+3 5
+10000 1
+</pre>
+        </td>
+        <td>
+<pre>
+Case #1
+8
+Case #2
+10001
+</pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,81 @@
+﻿<div>
+  <pre>
+<!-- 문제 설명 -->
+한화 S&C 채용 담당자인 혜리는 지원자분들의 궁금한 점들을 해결해 주기 위해 열심히 Q&A 게시판에 답변을 달고 있는 중이다.
+하지만 정신 없이 답변을 달다 보니, 인사 문구인 "Welcome to Hanwha S&C" 문구를 타이핑 하는데 자꾸만 오타가 난다. 
+
+혜리가 오타를 낸 문자열을 "Welcome to Hanwha S&C"로 효율적으로 수정할 수 있도록 도와주자.
+
+수정하는 동작은 3가지이며 변경, 삽입, 삭제 이다. 각 동작마다 비용 1이 발생한다.
+
+- 변경 : 문자를 새로운 문자로 변경하였을 때 ( + 1 )
+- 삽입 : 새로운 문자를 삽입하였을 때 ( + 1 )
+- 삭제 : 문자를 삭제하였을 때 ( + 1 )
+
+ex) 입력 문자열 "Qelcome to HanwhaSn&" << 혜리가 오타를 낸 문구
+
+<img src="P2004.png">
+
+총 4번의 동작이 이루어졌으므로, 비용은 4이다.
+* 대문자와 소문자를 구분한다.
+* 삭제 연산을 수행하면 삭제 위치 뒤에 있는 문자들은 앞으로 한 칸 당겨진다.
+* 삽입 연산을 수행하면 삽입 위치 뒤에 있는 문자들은 뒤로 한 칸 밀려난다.
+
+
+  </pre>
+
+  <div class="format-box">INPUT FORMAT</div>
+  <pre>
+<!-- 입력 설명 -->
+- 입력은 표준입력으로 제공된다.
+- 입력은 여러 테스트 케이스가 포함될 수 있다.
+- 첫째 줄 에는 테스트 케이스의 개수를 나타내는 자연수 T 가 주어진다. 이후 차례로 T개의 테스트 케이스가 주어진다 (1 ≤ T ≤ 100)
+- 둘째 줄부터 T+1번째 줄까지 테스트 케이스 S가 입력된다. 각 테스트 케이스는 개행문자(newline)로 구분된다. (1 ≤ S.length ≤ 10000)
+
+  </pre>
+  <div class="format-box">OUTPUT FORMAT</div>
+  <pre>
+<!-- 출력 설명 -->
+- 각 테스트 케이스의 답을 표준출력으로 출력해야 한다.
+- 각 테스트 케이스마다 첫줄에는 "Case #C"와 개행문자(newline)를 출력하여야 한다. 이때 C는 테스트 케이스의 번호이다. 이후 답과 개행문자(newline)를 출력한다.
+
+  </pre>
+  <hr class="hr-1">
+  <div class="example-box"> EXAMPLE </div>
+  <table class="table-io-case table">
+    <thead>
+      <tr>
+        <th>입력</th>
+        <th>출력</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <pre>
+<!-- 샘플 입력 -->
+3
+Qelcome to HanwhaSn&
+Welcome to our company
+Challenge Hanwha
+
+
+          </pre>
+        </td>
+        <td>
+          <pre>
+<!-- 샘플 출력 -->
+Case #1
+4
+Case #2
+11
+Case #3
+13
+
+
+          </pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

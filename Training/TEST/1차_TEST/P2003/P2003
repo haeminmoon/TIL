@@ -1,0 +1,56 @@
+<div>
+  <pre>
+<!-- 문제 설명 -->
+자연수 N이 입력되면 “Hello Hanwha!” 를 N번 출력하세요.
+  </pre>
+
+  <div class="format-box">INPUT FORMAT</div>
+  <pre>
+<!-- 입력 설명 -->
+* 입력은 표준입력으로 제공된다.
+* 입력은 여러 테스트 케이스가 포함될 수 있다.
+* 첫째 줄 에는 테스트 케이스의 개수를 나타내는 자연수 T 가 주어진다. 이후 차례로 T개의 테스트 케이스가 주어진다 (1 ≤ T ≤ 100)
+* 각 테스트 케이스에는 자연수 N (1≤ N ≤ 100) 이 주어진다
+  </pre>
+  <div class="format-box">OUTPUT FORMAT</div>
+  <pre>
+<!-- 출력 설명 -->
+* 각 테스트 케이스의 답을 표준출력으로 출력해야 한다.
+* 각 테스트 케이스마다 첫 줄에는 "Case #C"와 개행문자(newline) 출력하여야 한다. 이때 C는 테스트 케이스의 번호이다. 이후 정답을 출력한다.
+  </pre>
+  <hr class="hr-1">
+  <div class="example-box"> EXAMPLE </div>
+  <table class="table-io-case table">
+    <thead>
+      <tr>
+        <th>입력</th>
+        <th>출력</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <pre>
+3
+1
+3
+2
+</pre>
+        </td>
+        <td>
+<pre>
+Case #1
+Hello Hanwha!
+Case #2
+Hello Hanwha!
+Hello Hanwha!
+Hello Hanwha!
+Case #3
+Hello Hanwha!
+Hello Hanwha!
+</pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
