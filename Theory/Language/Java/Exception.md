@@ -89,3 +89,4 @@ RuntimeException은 실행 시 발생하는 예외이고 Exception은 컴파일 
 **프로그래밍 시 Exception을 처리하는 위치는 대단히 중요하다. 프로그램의 수행여부를 결정하기도 하고 트랜잭션 처리와도 밀접한 관계가 있기 때문이다.**
 
 [참조 URL](https://wikidocs.net/229)
+[참조 URL](http://www.nextree.co.kr/p3239/)
