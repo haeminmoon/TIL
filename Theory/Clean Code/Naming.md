@@ -3,31 +3,31 @@
 
 소프트웨어에서 이름은 어디에나 쓰인다. 변수, 함수, 메소드, 클래스, 파일 명... 등 이렇듯 모든 측면에서 이름을 사용하는데 좋은 이름을 잘 지으면 그만큼 이점이 있기에 이름을 잘 짓는 간단한 규칙에 대해 공부하자. 
 
-
+##
 ##의도를 분명히 밝혀라
 
 int d; // 경과 시간(단위: 날짜)
 
 이름 d는 주석을 달기전까지는 아무런 의미도 전달하지 못한다. 
 
-int elapsedTimeInDays;
-int daysSinceCreation;
-int daysSinceModification;
-int fileAgeInDays;
+	int elapsedTimeInDays;
+	int daysSinceCreation;
+	int daysSinceModification;
+	int fileAgeInDays;
 
 처럼, 의도가 드러나는 이름을 사용하면 코드에 대한 이해와 변경이 쉬워진다. 
 
 
-
+##
 ## 의미있게 구분하라
 
 컴파일러나 인터프리터만 통과하려는 생각을 코드를 구현하면 안된다.
 
 예를 들어,
 
-getActiveAccount();
-getActiveAccounts();
-getActiveAccountInfo();
+	getActiveAccount();
+	getActiveAccounts();
+	getActiveAccountInfo();
 
 이런식으로 메소드를 나열한다면, 다른 프로그래머가 코드를 리딩할때 어느 함수를 호출할지 어떻게 알 수 있을까?
 명확한 관례가 없다면 변수 moneyAmount는 money와 구분하기가 힘들다. accountData와 account도 같다.
@@ -72,8 +72,8 @@ getActiveAccountInfo();
 
 예를 들어,
 
-Complex fulcrumPoint = Complex.FromRealNumber(23.0);
-Complex fulcrumPoint = new Complex(23.0);
+	Complex fulcrumPoint = Complex.FromRealNumber(23.0);
+	Complex fulcrumPoint = new Complex(23.0);
 
 위 코드가 아래 코드보다 좋다.
 
