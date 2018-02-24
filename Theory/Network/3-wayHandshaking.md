@@ -1,4 +1,6 @@
 # 3-wayHandshaking
+ 
+ 
 
 ## 3-wayHandshake?
 
@@ -13,6 +15,8 @@ TCP 3 Way Handshake는 TCP/IP프로토콜을 이용해서 통신을 하는 응�
 
 여기서 SYN은 'synchronize sequence numbers', 그리고 ACK는'acknowledgment' 의 약자이다.
 이러한 절차는 TCP 접속을 성공적으로 성립하기 위하여 반드시 필요하다.
+ 
+ 
 
 ## TCP의 3-way Handshaking 역할
 
@@ -21,8 +25,10 @@ TCP 3 Way Handshake는 TCP/IP프로토콜을 이용해서 통신을 하는 응�
 • 양쪽 모두 상대편에 대한 초기 순차일련변호를 얻을 수 있도록 한다. 
 
 ![image1](http://cfile9.uf.tistory.com/image/225A964D52F1BB69177202)
+ 
 
 
+ 
 ## TCP의 3-way Handshaking 과정
 
 [STEP 1]
@@ -34,7 +40,9 @@ B서버는 SYN요청을 받고 A클라이언트에게 요청을 수락한다는 
 [STEP 3]
 A클라이언트는 B서버에게 ACK을 보내고 이후로부터는 연결이 이루어지고 데이터가 오가게 되는것이다. 이때의 B서버 상태가 ESTABLISHED 이다.
 위와 같은 방식으로 통신하는것이 신뢰성 있는 연결을 맺어 준다는 TCP의 3 Way handshake 방식이다.
-
+ 
+ 
+ 
 
 ## 4-wayHandshake?
 
