@@ -1,6 +1,6 @@
-#3-wayHandshaking
+# 3-wayHandshaking
 
-##3-wayHandshake?
+## 3-wayHandshake?
 
 TCP는 장치들 사이에 논리적인 접속을 성립(establish)하기 위하여 three-way handshake를 사용한다.
 
@@ -14,7 +14,7 @@ TCP 3 Way Handshake는 TCP/IP프로토콜을 이용해서 통신을 하는 응�
 여기서 SYN은 'synchronize sequence numbers', 그리고 ACK는'acknowledgment' 의 약자이다.
 이러한 절차는 TCP 접속을 성공적으로 성립하기 위하여 반드시 필요하다.
 
-##TCP의 3-way Handshaking 역할
+## TCP의 3-way Handshaking 역할
 
 • 양쪽 모두 데이타를 전송할 준비가 되었다는 것을 보장하고, 실제로 데이타 전달이 시작하기전에 한쪽이 다른 쪽이 준비되었다는 것을 알수 있도록 한다.
 
@@ -23,7 +23,7 @@ TCP 3 Way Handshake는 TCP/IP프로토콜을 이용해서 통신을 하는 응�
 ![image1](http://cfile9.uf.tistory.com/image/225A964D52F1BB69177202)
 
 
-##TCP의 3-way Handshaking 과정
+## TCP의 3-way Handshaking 과정
 
 [STEP 1]
 A클라이언트는 B서버에 접속을 요청하는 SYN 패킷을 보낸다. 이때 A클라이언트는 SYN 을 보내고 SYN/ACK 응답을 기다리는SYN_SENT 상태가 되는 것이다.
@@ -36,13 +36,13 @@ A클라이언트는 B서버에게 ACK을 보내고 이후로부터는 연결이 
 위와 같은 방식으로 통신하는것이 신뢰성 있는 연결을 맺어 준다는 TCP의 3 Way handshake 방식이다.
 
 
-##4-wayHandshake?
+## 4-wayHandshake?
 
 3-Way handshake는 TCP의 연결을 초기화 할 때 사용한다면, 4-Way handshake는 세션을 종류하기 위해 수행되는 절차
 
 ![image2](http://cfile25.uf.tistory.com/image/2152353F52F1C02835CC3B)
 
-##TCP의 4-way Handshaking 과정
+## TCP의 4-way Handshaking 과정
 
 [STEP 1]
 클라이언트가 연결을 종료하겠다는 FIN플래그를 전송한다.
