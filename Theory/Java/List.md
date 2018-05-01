@@ -1,4 +1,4 @@
-#ArrayList, LinkedList
+# ArrayList, LinkedList
 
 **LinkedList 와 ArrayList 는 모두 Java에서 제공하는 List 인터페이스를 구현한 Collection 이다. 
 하지만 내부적으로 서로 다른 점이 존재하며, 어떠한 차이가 있는지 LinkedList 와 ArrayList 를 어떻게 적절하게 사용 할지 간단히 정리 해 보려 한다.** 

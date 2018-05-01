@@ -1,6 +1,6 @@
-#Map
+# Map
 
-##HashMap (O(1))
+## HashMap (O(1))
 
 	 내부적으로 Entry<K,V>[] Entry 의 array 로 되어 있다. 해당 array 에 index 는 내부 해쉬 함수를 통해 계산된다.
 	 String 은 sun.misc.Hashing.stringHash32 함수를 사용하고 일반 Object는 내부 hashcode 함수와 비트연산으로 계산되어진다.
@@ -17,7 +17,7 @@
 
 - 내부 hash 값에 따라서 키순서가 정해지므로 특정 규칙없이 출력됨!
 
-##TreeMap (O(logn))
+## TreeMap (O(logn))
 
 	 내부적으로 RedBlack Tree로 저장됨, 키값에 대한 Compartor 구현으로 정렬 순서를 바꿀수 있다.
 
@@ -33,7 +33,7 @@
 
 - 키값이 알파벳 순서대로 정렬된다. 트리에 저장되므로 키값은 일정 기준으로 정렬된 상태로 출력된다.	 
 
-##LinkedHashMap (O(n))
+## LinkedHashMap (O(n))
 
 	 링크드 리스트로 저장됨
 
@@ -47,7 +47,7 @@
 	 }
 	 // c, a, b, k 출력
 
-##HashTable과 HashMap 비교
+## HashTable과 HashMap 비교
 
 - HashTable
 : key / value에 null을 허용하지 않는다.
@@ -61,7 +61,7 @@
 : 동기화를 위해서는 Map m = Collections.synchronizedMap(new HashMap(...));과 같이 생성 한다.
 : 비교적 빠르다.
 
-##정리
+## 정리
 
 - 특별한 이유가 없다면 검색 성능이 좋은(O(1)) HashMap 을 사용하자
 
