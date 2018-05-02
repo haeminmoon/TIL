@@ -14,7 +14,7 @@
 	**오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.**
 
 
-- Young 영역(Yong Generation 영역): 
+- Young 영역(Yong Generation 영역):
 
 	- 새롭게 생성한 객체의 대부분이 여기에 위치한다. 대부분의 객체가 금방 접근 불가능 상태가 되기 때문에 매우 많은 객체가 Young 영역에 생성되었다가 사라진다. 이 영역에서 객체가 사라질때 Minor GC가 발생한다고 말한다.
 
@@ -45,7 +45,7 @@
 
 	간단하게 Young 영역에 대한 GC에 대해서 알아보았다. 위에서 이야기한 두 가지 기술(bump-the-pointer, TLABs)을 반드시 기억하고 있을 필요는 없다. 몰라도 쇠고랑 안차고 경찰 출동 안한다. 그러나 Eden 영역에 최초로 객체가 만들어지고, Survivor 영역을 통해서 Old 영역으로 오래 살아남은 객체가 이동한다는 사실은 꼭 기억하기 바란다.
 
-- Old 영역(Old Generation 영역): 
+- Old 영역(Old Generation 영역):
 
 	- 접근 불가능 상태로 되지 않아 Young 영역에서 살아남은 객체가 여기로 복사된다. 대부분 Young 영역보다 크게 할당하며, 크기가 큰 만큼 Young 영역보다 GC는 적게 발생한다. 이 영역에서 객체가 사라질 때 Major GC(혹은 Full GC)가 발생한다고 말한다.
 
@@ -67,7 +67,7 @@
 
 	2. Parallel GC (-XX:+UseParallelGC)
 
-	Parallel GC는 Serial GC와 기본적인 알고리즘은 같지다. 그러나 Serial GC는 GC를 처리하는 스레드가 하나인 것에 비해, Parallel GC는 GC를 처리하는 쓰레드가 여러 개이다. 그렇기 때문에 Serial GC보다 빠른게 객체를 처리할 수 있다. Parallel GC는 메모리가 충분하고 코어의 개수가 많을 때 유리하다. Parallel GC는 Throughput GC라고도 부른다.
+	Parallel GC는 Serial GC와 기본적인 알고리즘은 같다. 그러나 Serial GC는 GC를 처리하는 스레드가 하나인 것에 비해, Parallel GC는 GC를 처리하는 쓰레드가 여러 개이다. 그렇기 때문에 Serial GC보다 빠른게 객체를 처리할 수 있다. Parallel GC는 메모리가 충분하고 코어의 개수가 많을 때 유리하다. Parallel GC는 Throughput GC라고도 부른다.
 
 	3. Parallel Old GC(-XX:+UseParallelOldGC)
 
@@ -96,5 +96,3 @@
 
 
 [GC관련 참조 URL](http://d2.naver.com/helloworld/1329)
-
-
