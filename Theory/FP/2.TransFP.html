@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>2. 함수형으로 전환하기</title>
+  <title>2. TransFP=</title>
   <script src="js/partial.js"></script>
   <script src="js/_.js"></script>
 
@@ -57,7 +57,9 @@ console.log(ages);
 
 // 2. _filter, _map으로 리팩토링
 
-var over_30 = _filter(users, function(user) { return user.age >= 30; });
+var over_30 = _filter(users, function(user) {
+  return user.age >= 30;
+});
 console.log(over_30);
 
 var names = _map(over_30, function(user) {
@@ -65,7 +67,9 @@ var names = _map(over_30, function(user) {
 });
 console.log(names);
 
-var under_30 = _filter(users, function(user) { return user.age < 30; });
+var under_30 = _filter(users, function(user) {
+  return user.age < 30;
+});
 console.log(under_30);
 
 var ages = _map(under_30, function(user) {
